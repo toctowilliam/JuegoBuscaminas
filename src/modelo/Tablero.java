@@ -1,6 +1,6 @@
 package modelo;
 
-public class TableroInicialModel {
+public class Tablero {
     private final int[][] tableroInicial = new int[10][10];
 
     private void setTable() {

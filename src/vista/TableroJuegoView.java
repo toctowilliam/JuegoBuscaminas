@@ -5,7 +5,7 @@ public class TableroJuegoView {
         char[][] tableWithoutMines = new char[10][10];
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                tableWithoutMines[i][j] = 'c';
+                tableWithoutMines[i][j] = 'O';
             }
         }
         return tableWithoutMines;
