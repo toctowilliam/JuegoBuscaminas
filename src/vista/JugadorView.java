@@ -1,12 +1,12 @@
 package vista;
 
-import java.awt.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class JugadorView {
 
     Scanner scanner = new Scanner(System.in);
+
     public JugadorView() {
     }
 
@@ -125,4 +125,14 @@ public class JugadorView {
         }
     }
 
+    public void imprimirVictoria() {
+        System.out.println("Felicidades has gando la partida!!");
+    }
+
+    public void imprimirCasillasDesbloqueadas(int numCasillas) {
+        System.out.println("-------------------------------------");
+        System.out.println("\t\t" + numCasillas + " desbloqueadas");
+        System.out.println("-------------------------------------");
+
+    }
 }

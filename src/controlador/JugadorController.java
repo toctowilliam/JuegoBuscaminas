@@ -32,8 +32,6 @@ public class JugadorController {
                         int opcionJuego = jugadorView.mostrarOpcionesJuego();
                         switch (opcionJuego) {
                             case 1:
-                                //int x = coordenadaX() - 1;
-                                //int y = coordenadaY() - 1;
                                 int x = coordenadaX();
                                 int y = coordenadaY();
                                 int xLogica = x - 1;
@@ -47,6 +45,13 @@ public class JugadorController {
                                     exitMenuInicial = true;
                                 } else {
                                     tableroView.actualizarTablero(new Point(xLogica, yLogica), false);
+                                    boolean seGanoPartida = seGanoPartida();
+                                    jugadorView.imprimirCasillasDesbloqueadas(getNumeroCasillasDesbloqueadas());
+                                    if(seGanoPartida){
+                                        jugadorView.imprimirVictoria();
+                                        exit = true;
+                                        exitMenuInicial = true;
+                                    }
                                 }
                                 break;
                             case 2:
@@ -79,4 +84,11 @@ public class JugadorController {
         return condicionesJuego.existeMina(puntos);
     }
 
+    private boolean seGanoPartida(){
+        return condicionesJuego.seGanoPartida();
+    }
+
+    private int getNumeroCasillasDesbloqueadas(){
+        return condicionesJuego.getCasillasDesbloqueadas();
+    }
 }

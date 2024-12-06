@@ -15,7 +15,7 @@ public class MainJuego {
         for(Point coor : arrayMinas){ //Solo por testing
             System.out.println(coor);
         }
-        LogicaJuego logicaJuego = new LogicaJuego(tableroMinas);
+        LogicaJuego logicaJuego = new LogicaJuego(tableroMinas, tableJuegoIncial);
         TableroView tableroView = new TableroView(tableJuegoIncial, tableroMinas);
         JugadorController controller = new JugadorController(tableroView,logicaJuego);
         controller.iniciarJuego();
