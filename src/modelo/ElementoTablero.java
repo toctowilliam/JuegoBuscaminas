@@ -1,20 +1,19 @@
 package modelo;
 
-public abstract class ElementoTablero {
-    private boolean estaRevelado;
+import java.io.Serializable;
 
-    public ElementoTablero() {
-        this.estaRevelado = false;
-    }
+public abstract class ElementoTablero implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    private boolean estaRevelado;
 
     public boolean estaRevelado() {
         return estaRevelado;
     }
 
     public void revelar() {
-        this.estaRevelado = true;
+        estaRevelado = true;
     }
 
-    // Método abstracto que será implementado por las subclases
     public abstract void accion();
 }
