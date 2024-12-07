@@ -45,14 +45,14 @@ public class Tablero {
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
                 if (tablero[i][j] instanceof CasillaSinMina) {
-                    int minas = contarMinasAdyacentes(i, j);
+                    String minas = contarMinasAdyacentes(i, j);
                     ((CasillaSinMina) tablero[i][j]).setMinasAdyacentes(minas);
                 }
             }
         }
     }
 
-    private int contarMinasAdyacentes(int fila, int columna) {
+    private String contarMinasAdyacentes(int fila, int columna) {
         int minas = 0;
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
@@ -64,7 +64,11 @@ public class Tablero {
                 }
             }
         }
-        return minas;
+        System.out.println(minas);
+        if(minas == 0){
+            return "V";
+        }
+        return String.valueOf(minas);
     }
 
     private boolean esCoordenadaValida(int fila, int columna) {

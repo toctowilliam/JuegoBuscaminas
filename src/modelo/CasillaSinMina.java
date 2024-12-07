@@ -1,17 +1,17 @@
 package modelo;
 
 public class CasillaSinMina extends ElementoTablero {
-    private int minasAdyacentes;
+    private String minasAdyacentes;
 
     public CasillaSinMina() {
-        this.minasAdyacentes = 0;
+        this.minasAdyacentes = String.valueOf(0);
     }
 
-    public int getMinasAdyacentes() {
+    public String getMinasAdyacentes() {
         return minasAdyacentes;
     }
 
-    public void setMinasAdyacentes(int minasAdyacentes) {
+    public void setMinasAdyacentes(String minasAdyacentes) {
         this.minasAdyacentes = minasAdyacentes;
     }
 
