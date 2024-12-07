@@ -1,28 +1,30 @@
 package vista;
 
+import javax.swing.*;
+import java.io.File;
 import java.util.Scanner;
 
 public class VistaInicial {
-  private final Scanner scanner = new Scanner(System.in);
 
   public String mostrarBienvenida() {
     System.out.println("=====================================");
     System.out.println("  Bienvenido a Juego Buscaminas WiSH-MaNi");
     System.out.println("=====================================");
     System.out.println("Por favor, ingresa tu nombre: ");
-    return scanner.nextLine().trim();
+    return new Scanner(System.in).nextLine().trim();
   }
 
   public int mostrarOpcionesIniciales(String nombre) {
-    System.out.println("\nHola, " + nombre + " Escoge una opción: ");
-    System.out.println("1. Iniciar juego");
-    System.out.println("2. Salir del juego");
+    System.out.println("\nHola, " + nombre + "! ¿Qué deseas hacer?");
+    System.out.println("1. Reanudar partida");
+    System.out.println("2. Iniciar nueva partida");
+    System.out.println("3. Salir del juego");
 
     int opcion = 0;
-    while (opcion < 1 || opcion > 2) {
-      System.out.print("Selecciona una opción (1 o 2): ");
+    while (opcion < 1 || opcion > 3) {
+      System.out.print("Selecciona una opción (1-3): ");
       try {
-        opcion = Integer.parseInt(scanner.nextLine().trim());
+        opcion = Integer.parseInt(new Scanner(System.in).nextLine().trim());
       } catch (NumberFormatException e) {
         System.out.println("Por favor ingresa un número válido.");
       }
@@ -30,7 +32,31 @@ public class VistaInicial {
     return opcion;
   }
 
-  public void despedirse(String nombre) {
-    System.out.println("Gracias por jugar Buscaminas WiSH-MaNi, " + nombre + ". ¡Hasta la próxima!");
+  public File seleccionarArchivo() {
+    JFileChooser fileChooser = new JFileChooser();
+    fileChooser.setDialogTitle("Selecciona un archivo de partida guardada");
+    int seleccion = fileChooser.showOpenDialog(null);
+
+    if (seleccion == JFileChooser.APPROVE_OPTION) {
+      return fileChooser.getSelectedFile();
+    }
+    return null;
+  }
+
+  public int leerOpcion(int min, int max) {
+    int opcion = 0;
+    while (opcion < min || opcion > max) {
+      System.out.print("Selecciona una opción (" + min + "-" + max + "): ");
+      try {
+        opcion = Integer.parseInt(new Scanner(System.in).nextLine().trim());
+      } catch (NumberFormatException e) {
+        System.out.println("Por favor, ingresa un número válido.");
+      }
+    }
+    return opcion;
+  }
+
+  public void mostrarMensaje(String mensaje) {
+    System.out.println(mensaje);
   }
 }
