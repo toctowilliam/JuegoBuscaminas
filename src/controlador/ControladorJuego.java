@@ -53,7 +53,7 @@ public class ControladorJuego {
       }
     }
 
-    System.out.println("Gracias por jugar, " + jugador.getNombre() + ". ¡Hasta la próxima!");
+    System.out.println("Gracias por jugar, " + jugador.getNombre());
   }
 }
 

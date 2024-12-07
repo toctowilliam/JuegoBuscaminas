@@ -14,7 +14,7 @@ public class VistaInicial {
   }
 
   public int mostrarOpcionesIniciales(String nombre) {
-    System.out.println("\nHola, " + nombre + "! ¿Qué deseas hacer?");
+    System.out.println("\nHola, " + nombre + " Escoge una opción: ");
     System.out.println("1. Iniciar juego");
     System.out.println("2. Salir del juego");
 

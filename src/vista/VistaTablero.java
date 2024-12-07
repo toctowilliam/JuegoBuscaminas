@@ -12,10 +12,10 @@ public class VistaTablero {
                     if (tablero[i][j] instanceof modelo.CasillaConMina) {
                         System.out.print("M  ");
                     } else if (tablero[i][j] instanceof modelo.CasillaSinMina) {
-                        System.out.print(((modelo.CasillaSinMina) tablero[i][j]).getMinasAdyacentes() + "  ");
+                        System.out.print(((modelo.CasillaSinMina) tablero[i][j]).getMinasAdyacentes() + " ");
                     }
                 } else {
-                    System.out.print("X  ");
+                    System.out.print(" - ");
                 }
             }
             System.out.println();
