@@ -1,8 +1,13 @@
 package modelo;
 
+import excepciones.CasillaYaDescubiertaException;
+
+import java.io.Serializable;
 import java.util.Random;
 
-public class Tablero {
+public class Tablero implements Serializable {
+    private static final long serialVersionUID = 1L; // Versión para la serialización
+
     private final ElementoTablero[][] tablero;
     private final int filas;
     private final int columnas;
@@ -64,9 +69,8 @@ public class Tablero {
                 }
             }
         }
-        System.out.println(minas);
-        if(minas == 0){
-            return "V";
+        if (minas == 0) {
+            return "V"; // Representa una casilla vacía
         }
         return String.valueOf(minas);
     }
@@ -79,10 +83,25 @@ public class Tablero {
         return tablero;
     }
 
-    public ElementoTablero revelarCasilla(int fila, int columna) {
+    public ElementoTablero revelarCasilla(int fila, int columna) throws CasillaYaDescubiertaException {
         ElementoTablero elemento = tablero[fila][columna];
-        elemento.revelar();
+
+        if (elemento.estaRevelado()) {
+            throw new CasillaYaDescubiertaException("La casilla ya ha sido descubierta.");
+        }
+
+        elemento.revelar(); // Revela la casilla
         return elemento;
     }
-}
 
+    public boolean esVictoria() {
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                if (tablero[i][j] instanceof CasillaSinMina && !tablero[i][j].estaRevelado()) {
+                    return false; // Hay al menos una casilla sin mina que no ha sido revelada
+                }
+            }
+        }
+        return true; // Todas las casillas sin minas están reveladas
+    }
+}

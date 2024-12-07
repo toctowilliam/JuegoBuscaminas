@@ -1,10 +1,11 @@
 package modelo;
 
 public class CasillaSinMina extends ElementoTablero {
+    private static final long serialVersionUID = 1L;
     private String minasAdyacentes;
 
     public CasillaSinMina() {
-        this.minasAdyacentes = String.valueOf(0);
+        this.minasAdyacentes = "0";
     }
 
     public String getMinasAdyacentes() {
@@ -17,6 +18,11 @@ public class CasillaSinMina extends ElementoTablero {
 
     @Override
     public void accion() {
-        System.out.println("Casilla revelada. Minas adyacentes: " + minasAdyacentes);
+        this.revelar();
+    }
+
+    @Override
+    public String toString() {
+        return estaRevelado() ? "Minas adyacentes: " + minasAdyacentes : "X";
     }
 }
